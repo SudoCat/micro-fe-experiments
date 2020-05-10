@@ -6,9 +6,7 @@ if (
   document.readyState === "loaded" ||
   document.readyState === "interactive"
 ) {
-  setTimeout(function () {
-    rehydrate();
-  }, 1000);
+  rehydrate();
 } else {
   document.addEventListener("DOMContentLoaded", () => {
     rehydrate();
@@ -20,15 +18,15 @@ function rehydrate() {
   targets.forEach((target) => {
     const scope = target.dataset.componentScope;
     const module = target.dataset.component;
-    setTimeout(function () {
-      loadComponent(scope, module).then((Component) => {
-        ReactDOM.hydrate(
-          React.createElement(Component, JSON.parse(target.dataset.props)),
-          target
-        );
-        delete target.dataset.props;
-      });
-    }, Math.random() * 5000);
+    // setTimeout(function () {
+    loadComponent(scope, module).then((Component) => {
+      ReactDOM.hydrate(
+        React.createElement(Component, JSON.parse(target.dataset.props)),
+        target
+      );
+      delete target.dataset.props;
+    });
+    // }, Math.random() * 5000);
   });
 }
 

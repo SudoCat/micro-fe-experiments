@@ -35,7 +35,7 @@ module.exports = merge([
         library: { type: "var", name: "hostReact" },
         filename: "react-entry.js",
         exposes: {
-          "host-react": "./src/bootstrap.js",
+          "host-react": "./src/react-hydrate.js",
         },
         shared: ["react", "react-dom"],
       }),

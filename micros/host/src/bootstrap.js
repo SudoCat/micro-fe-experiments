@@ -1,7 +1,7 @@
 const hosts = [
   {
     scope: "hostReact",
-    component: "host-react",
+    module: "host-react",
   },
 ];
 
@@ -18,7 +18,7 @@ if (
 }
 
 function init() {
-  hosts.forEach(loadComponent);
+  Promise.all(hosts.map(loadComponent));
 }
 
 function loadComponent({ scope, module }) {
